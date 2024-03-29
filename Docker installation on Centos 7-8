@@ -1,1 +1,32 @@
+Step 1: Clean the old packages:
 
+Initially clean the old docker packages if you have installed the older version of docker
+# sudo yum remove -y docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+
+Step 2: Install Docker Repository:
+Add the latest docker repository on centos machine
+
+# sudo yum install -y yum-utils
+# sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+Step 3: Install the all Docker packages:
+Once repo added install the latest docker packages
+
+# sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+Step 4: Run the Docker:
+Once we installed the packages , enable docker on boot and start the docker service
+
+# sudo systemctl start docker && sudo systemctl enable docker
+
+Step 5: Install hello world container:
+Now run the Hello Word ! on docker.
+
+# sudo docker run hello-world
